@@ -1,0 +1,30 @@
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n, t, min, max, p = 1;
+
+    cin >> n;
+    t = n;
+    min = n % 10;
+    max = n % 10;
+    while (t) {
+        if (t % 10 < min)min = t % 10;
+        if (t % 10 > max)max = t % 10;
+        t /= 10;
+    }
+    t = n;
+    n = 0;
+    while (t) {
+        if (t % 10 == min)n += max * p;
+        if (t % 10 == max)n += min * p;
+        if (t % 10 != min && t % 10 != max)n += t % 10 * p;
+        t /= 10;
+        p *= 10;
+    }
+    cout << n;
+    system("pause");
+    return 0;
+}
